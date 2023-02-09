@@ -2,12 +2,14 @@ package com.Attornatus.APIRestH2db.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 public class Pessoa {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +18,8 @@ public class Pessoa {
     private String nome;
     @Column(name = "dataDeNascimento")
     private String dataDeNascimento;
-    @Column(name = "endereco")
-    private String endereco;
+
+    @Embedded
+    private Endereco endereco;
 
 }
