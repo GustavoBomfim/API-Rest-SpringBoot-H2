@@ -21,8 +21,8 @@ public class PessoaController {
     private ModelMapper modelMapper;
 
     @PostMapping
-    public Pessoa cadastrarPessoa(@RequestBody Pessoa pessoa, Endereco endereco){
-        return pessoaService.salvar(pessoa, endereco);
+    public Pessoa cadastrarPessoa(@RequestBody Pessoa pessoa){
+        return pessoaService.salvar(pessoa);
     }
 
     @GetMapping
@@ -43,5 +43,14 @@ public class PessoaController {
         })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
 
+    }
+    @PutMapping("/{id}")
+    public void atualizarDadosPessoaPorId(@PathVariable("id") Long id, @RequestBody Pessoa pessoa){
+        pessoaService.procurarPessoaPorId(id).map(pessoaBase -> {
+            modelMapper.map(pessoa, pessoaBase);
+            pessoaService.salvar(pessoaBase);
+            return Void.TYPE;
+        })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
     }
 }

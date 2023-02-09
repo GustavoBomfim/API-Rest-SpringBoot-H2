@@ -14,7 +14,7 @@ public class PessoaService {
     @Autowired
     PessoaRepository pessoaRepository;
 
-    public Pessoa salvar(Pessoa pessoa, Endereco endereco){
+    public Pessoa salvar(Pessoa pessoa){
         return pessoaRepository.save(pessoa);
     }
 
