@@ -37,6 +37,7 @@ public class PessoaController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removerPessoaPorId(@PathVariable("id") Long id){
         pessoaService.procurarPessoaPorId(id).map(pessoa -> {
             pessoaService.removerPessoaPorId(pessoa.getId()); return Void.TYPE;

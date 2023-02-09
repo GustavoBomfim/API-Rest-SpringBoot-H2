@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class Pessoa {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nome;
-    @Column(name = "dataDeNascimento")
+    @Column(name = "dataDeNascimento", nullable = false)
     private String dataDeNascimento;
 
     @Embedded
