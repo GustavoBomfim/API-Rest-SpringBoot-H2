@@ -5,7 +5,9 @@ import com.Attornatus.APIRestH2db.entity.Pessoa;
 import com.Attornatus.APIRestH2db.service.PessoaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,7 +25,13 @@ public class PessoaController {
     }
 
     @GetMapping
-    public List<Pessoa> listarPessoa(){
+    public List<Pessoa> listarPessoas(){
         return pessoaService.listarPessoas();
+    }
+    @GetMapping("/{id}")
+    public Pessoa listarPessoaPorId(@PathVariable("id") Long id){
+        return pessoaService.procurarPessoaPorId(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
+
     }
 }
