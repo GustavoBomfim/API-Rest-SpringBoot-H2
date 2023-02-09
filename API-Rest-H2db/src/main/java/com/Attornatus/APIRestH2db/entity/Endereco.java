@@ -7,10 +7,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Embeddable
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Embeddable
 @Builder
 public class Endereco {
     @Column(name = "logradouro")
