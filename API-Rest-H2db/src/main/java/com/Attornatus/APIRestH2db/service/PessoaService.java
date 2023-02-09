@@ -6,13 +6,18 @@ import com.Attornatus.APIRestH2db.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PessoaService {
     @Autowired
-    PessoaRepository repository;
+    PessoaRepository pessoaRepository;
 
     public Pessoa salvar(Pessoa pessoa, Endereco endereco){
-        return repository.save(pessoa);
+        return pessoaRepository.save(pessoa);
     }
 
+    public List<Pessoa> listarPessoas() {
+        return pessoaRepository.findAll();
+    }
 }
