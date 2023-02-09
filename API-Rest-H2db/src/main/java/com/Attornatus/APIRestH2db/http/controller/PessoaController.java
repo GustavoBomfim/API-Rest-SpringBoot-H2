@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -31,6 +32,15 @@ public class PessoaController {
     @GetMapping("/{id}")
     public Pessoa listarPessoaPorId(@PathVariable("id") Long id){
         return pessoaService.procurarPessoaPorId(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void removerPessoaPorId(@PathVariable("id") Long id){
+        pessoaService.procurarPessoaPorId(id).map(pessoa -> {
+            pessoaService.removerPessoaPorId(pessoa.getId()); return Void.TYPE;
+        })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
 
     }

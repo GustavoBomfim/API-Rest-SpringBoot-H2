@@ -25,4 +25,8 @@ public class PessoaService {
     public Optional <Pessoa> procurarPessoaPorId(Long id) {
         return pessoaRepository.findById(id);
     }
+
+    public void removerPessoaPorId(Long id) {
+        pessoaRepository.deleteById(id);
+    }
 }
