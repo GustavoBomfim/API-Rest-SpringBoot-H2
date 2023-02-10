@@ -43,7 +43,6 @@ public class PessoaController {
             pessoaService.removerPessoaPorId(pessoa.getId()); return Void.TYPE;
         })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
-
     }
     @PutMapping("/{id}")
     public void atualizarDadosPessoaPorId(@PathVariable("id") Long id, @RequestBody Pessoa pessoa){
