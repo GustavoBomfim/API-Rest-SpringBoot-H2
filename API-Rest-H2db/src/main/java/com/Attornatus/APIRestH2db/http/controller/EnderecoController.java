@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class EnderecoController {
     @Autowired
     EnderecoService enderecoService;
+    /*
     @PostMapping
     public Endereco cadastrarEndereco(@RequestBody Endereco endereco){
         return enderecoService.salvarEndereco(endereco);
     }
+
+     */
 }

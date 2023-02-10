@@ -23,12 +23,18 @@ public class Pessoa {
     @Column(name = "dataDeNascimento", nullable = false)
     private String dataDeNascimento;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @Column(nullable = false)
     private List<Endereco> enderecos;
 
     public void adicionarEndereco(Endereco endereco){
         this.enderecos.add(endereco);
     }
+   /*
+    public List<Endereco> enderecos (Pessoa pessoa){
+        return
+    }
+
+    */
 
 }

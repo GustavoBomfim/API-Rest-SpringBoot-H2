@@ -34,8 +34,12 @@ public class PessoaService {
         pessoaRepository.deleteById(id);
     }
 
-    public void cadastrarNovoEndereco(Endereco endereco, Pessoa pessoa) {
+    public Pessoa cadastrarNovoEndereco(Endereco endereco, Pessoa pessoa) {
         pessoa.adicionarEndereco(endereco);
-        pessoaRepository.save(pessoa);
+        return pessoaRepository.save(pessoa);
+    }
+
+    public Optional<Pessoa> procurarEnderecoPorPessoaId(Long id) {
+         return pessoaRepository.findById(id);
     }
 }

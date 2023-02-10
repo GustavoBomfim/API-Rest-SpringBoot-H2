@@ -67,4 +67,11 @@ public class PessoaController {
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
     }
+
+    @GetMapping("/{id}/enderecos")
+    public Pessoa listarEnderecoPorPessoaId(@PathVariable("id") Long id){
+        return pessoaService.procurarEnderecoPorPessoaId(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
+
+    }
 }
