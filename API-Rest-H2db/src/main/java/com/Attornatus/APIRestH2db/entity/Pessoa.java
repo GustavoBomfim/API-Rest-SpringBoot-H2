@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +21,11 @@ public class Pessoa {
     @Column(name = "dataDeNascimento", nullable = false)
     private String dataDeNascimento;
 
-    @Embedded
-    private Endereco endereco;
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @Column(nullable = false)
+    private List<Endereco> enderecos;
 
+    public void adicionarEndereco(Endereco endereco){
+        this.enderecos.add(endereco);
+    }
 }
