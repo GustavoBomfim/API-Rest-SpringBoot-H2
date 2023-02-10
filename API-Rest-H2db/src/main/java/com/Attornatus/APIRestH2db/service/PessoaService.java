@@ -2,6 +2,7 @@ package com.Attornatus.APIRestH2db.service;
 
 import com.Attornatus.APIRestH2db.entity.Endereco;
 import com.Attornatus.APIRestH2db.entity.Pessoa;
+import com.Attornatus.APIRestH2db.repository.EnderecoRepository;
 import com.Attornatus.APIRestH2db.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,11 @@ public class PessoaService {
     @Autowired
     PessoaRepository pessoaRepository;
 
+    @Autowired
+    EnderecoRepository enderecoRepository;
+
     public Pessoa salvar(Pessoa pessoa){
-        return pessoaRepository.save(pessoa);
+         return pessoaRepository.save(pessoa);
     }
 
     public List<Pessoa> listarPessoas() {
@@ -28,5 +32,10 @@ public class PessoaService {
 
     public void removerPessoaPorId(Long id) {
         pessoaRepository.deleteById(id);
+    }
+
+    public void cadastrarNovoEndereco(Endereco endereco, Pessoa pessoa) {
+        pessoa.adicionarEndereco(endereco);
+        pessoaRepository.save(pessoa);
     }
 }

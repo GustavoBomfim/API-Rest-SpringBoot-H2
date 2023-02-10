@@ -5,12 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
+
 public class Pessoa {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,7 +23,12 @@ public class Pessoa {
     @Column(name = "dataDeNascimento", nullable = false)
     private String dataDeNascimento;
 
-    @Embedded
-    private Endereco endereco;
+    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @Column(nullable = false)
+    private List<Endereco> enderecos;
+
+    public void adicionarEndereco(Endereco endereco){
+        this.enderecos.add(endereco);
+    }
 
 }

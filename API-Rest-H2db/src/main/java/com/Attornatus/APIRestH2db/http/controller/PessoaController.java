@@ -2,12 +2,12 @@ package com.Attornatus.APIRestH2db.http.controller;
 
 import com.Attornatus.APIRestH2db.entity.Endereco;
 import com.Attornatus.APIRestH2db.entity.Pessoa;
+import com.Attornatus.APIRestH2db.service.EnderecoService;
 import com.Attornatus.APIRestH2db.service.PessoaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -17,6 +17,9 @@ import java.util.List;
 public class PessoaController {
     @Autowired
     PessoaService pessoaService;
+
+    @Autowired
+    EnderecoService enderecoService;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -24,6 +27,7 @@ public class PessoaController {
     public Pessoa cadastrarPessoa(@RequestBody Pessoa pessoa){
         return pessoaService.salvar(pessoa);
     }
+
 
     @GetMapping
     public List<Pessoa> listarPessoas(){
@@ -52,6 +56,15 @@ public class PessoaController {
             pessoaService.salvar(pessoaBase);
             return Void.TYPE;
         })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
+    }
+
+    //
+    @PostMapping("/{id}/enderecos")
+    public void cadastrarEndereco(@PathVariable("id") Long id, @RequestBody Endereco endereco){
+        pessoaService.procurarPessoaPorId(id).map(pessoa -> {
+                    pessoaService.cadastrarNovoEndereco(endereco, pessoa); return Void.TYPE;
+                })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada"));
     }
 }
