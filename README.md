@@ -12,6 +12,20 @@
   <li> Lombok.</li>
 </ul>
 
+## 🙋🏻‍♂️ Para testar:
+
+<ol>
+  <li> Digite: "git clone https://github.com/GustavoBomfim/API-Rest-SpringBoot-H2/tree/master" em seu terminal para baixar o projeto.</li>
+  <li> Atualize as dependências do Maven e espere alguns instantes. </li>
+  <li> Execute o projeto. </li>
+  <li> Rode as requisições post em json. </li>
+</ol>
+
+<p> Para acessar o banco de dados H2: execute o projeto e digite a URL: http://localhost:8080/h2. Após isso clique em "conectar".
+
+### 📌 Importante:
+<p> Foi salvo uma collection do Insomnia para realizar os testes das requisições. 
+
 
 ## 🏁 Funcionalidades 
 <ul>
@@ -36,13 +50,4 @@ Requisições para a API devem seguir os padrões:
 | `PUT` | localhost:8080/pessoas/id | Atualiza dados da pessoa dona do id. |
 | `DELETE` | localhost:8080/pessoas/id | Remove os registros da pessoa do sistema. |
 
-## 🙋🏻‍♂️ Para testar:
 
-<ol>
-  <li> Digite: "git clone https://github.com/GustavoBomfim/API-Rest-SpringBoot-H2/tree/master" em seu terminal para baixar o projeto.</li>
-  <li> Atualize as dependências do Maven e espere alguns instantes. </li>
-  <li> Execute o projeto. </li>
-  <li> Rode as requisições post em json. </li>
-</ol>
-
-<p> Para acessar o banco de dados H2: execute o projeto e digite a URL: http://localhost:8080/h2. Após isso clique em "conectar".
