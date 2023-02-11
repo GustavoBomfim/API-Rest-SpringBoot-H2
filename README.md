@@ -51,3 +51,14 @@ Requisições para a API devem seguir os padrões:
 | `DELETE` | localhost:8080/pessoas/id | Remove os registros da pessoa do sistema. |
 
 
+## ✅ Qualidade de código
+
+#### 1-Durante a implementação de uma nova funcionalidade de software solicitada, quais critérios você avalia e implementa para garantia de qualidade de software?
+
+<p> Resposta: Antes de tudo eu avalio o motivo da solicitação desta nova funcionalidade para entender a dor do problema e depois pensar numa solução. Após isso, começo a escrever possíveis soluções e depois escolho a melhor delas. O processo de escolha é determinada por complexidade do código, estrutura e viabilidade. 
+
+	
+#### 2-Em qual etapa da implementação você considera a qualidade de software?
+<p> Resposta: Para evitar retrabalho a qualidade do software deve ser considerado na fase de planejamento, ou seja, antes mesmo de começar a codar.
+
+
